@@ -1,7 +1,9 @@
 Convo::Application.routes.draw do
+  resources :rooms
+
   get "static_pages/home"
 
-  root :to => 'static_pages#home'
+  root :to => 'rooms#index' #'static_pages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
