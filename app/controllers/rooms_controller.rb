@@ -15,9 +15,8 @@ class RoomsController < ApplicationController
     @room = Room.new
   end
 
-  # GET /rooms/1/edit
   def edit
-    @room = Room.find(params[:id])
+    @room = Room.find_by_slug(params[:id])
   end
 
   def create
@@ -39,10 +38,8 @@ class RoomsController < ApplicationController
     end
   end
 
-  # PUT /rooms/1
-  # PUT /rooms/1.json
   def update
-    @room = Room.find(params[:id])
+    @room = Room.find_by_slug(params[:id])
 
     respond_to do |format|
       if @room.update_attributes(params[:room])
@@ -55,10 +52,8 @@ class RoomsController < ApplicationController
     end
   end
 
-  # DELETE /rooms/1
-  # DELETE /rooms/1.json
   def destroy
-    @room = Room.find(params[:id])
+    @room = Room.find_by_slug(params[:id])
     @room.destroy
 
     respond_to do |format|

@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(:version => 20120820152549) do
 
   create_table "rooms", :force => true do |t|
-    t.string   "slug",          :null => false
+    t.string   "slug"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.string   "session_token", :null => false
+    t.string   "session_token"
   end
 
   add_index "rooms", ["slug"], :name => "index_rooms_on_slug", :unique => true

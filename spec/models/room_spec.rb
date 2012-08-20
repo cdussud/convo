@@ -2,10 +2,11 @@
 #
 # Table name: rooms
 #
-#  id         :integer          not null, primary key
-#  slug       :string(255)      not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id            :integer          not null, primary key
+#  slug          :string(255)      not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  session_token :string(255)      not null
 #
 
 require 'spec_helper'
@@ -37,6 +38,15 @@ describe Room do
       room.save!
       room.reload
       room.slug.should == "test"
+    end
+
+    it "parameterizes slugs" do
+      slug = "hello ' $there"
+      room = Room.new
+      room.slug = slug
+      room.save!
+      room.reload
+      room.slug.should == slug.parameterize
     end
   end
 end
