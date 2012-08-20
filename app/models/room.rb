@@ -11,6 +11,8 @@
 class Room < ActiveRecord::Base
   attr_accessible :slug
   validates_uniqueness_of :slug
+  validates_presence_of :session_token
+  
   after_save :create_slug
 
   private

@@ -1,9 +1,34 @@
+
+- session_id = @room.session_token
+
+%script{ :src => "#{opentok_js}", :type => "text/javascript" }
+
+:javascript
+
+  $(function() {
+    streamManager = new StreamManager('#{session_id}', '#{opentok_key}', '#{opentok_token(session_id)}');
+  });
+
+
 %p#notice= notice
-
-%p
-  %b Slug:
-  = @room.slug
-
 = link_to 'Edit', edit_room_path(@room)
 \|
 = link_to 'Back', rooms_path
+
+
+-# todo: rename
+#myPublisherDiv
+
+
+For higher-quality video
+%li
+  Navigate to
+  %code chrome://flags
+  in Chrome.
+  %li
+    Find the
+    %strong Enable PeerConnection
+    flag and click
+    = succeed "." do
+      %strong Enable
+  %li Relaunch Chrome.

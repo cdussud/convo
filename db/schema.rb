@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120818172725) do
+ActiveRecord::Schema.define(:version => 20120820152549) do
 
   create_table "rooms", :force => true do |t|
-    t.string   "slug",       :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "slug",          :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "session_token", :null => false
   end
 
   add_index "rooms", ["slug"], :name => "index_rooms_on_slug", :unique => true
