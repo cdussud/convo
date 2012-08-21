@@ -15,20 +15,21 @@
 .alert.alert-info
   The link to this room is
   =link_to room_url(@room)
+  %span.clippy-container=clippy(room_url(@room), '#D9EDF7')
 
-%div
-  For higher-quality video
-  %li
-    Navigate to
-    %code chrome://flags
-    in Chrome.
-    %li
-      Find the
-      %strong Enable PeerConnection
-      flag and click
-      = succeed "." do
-        %strong Enable
-    %li Relaunch Chrome.
+/ %div
+/   For higher-quality video
+/   %li
+/     Navigate to
+/     %code chrome://flags
+/     in Chrome.
+/     %li
+/       Find the
+/       %strong Enable PeerConnection
+/       flag and click
+/       = succeed "." do
+/         %strong Enable
+/     %li Relaunch Chrome.
 
-  -# todo: rename
+-# todo: rename
 #myPublisherDiv

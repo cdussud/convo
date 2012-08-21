@@ -1,12 +1,17 @@
 
 .center.hero-unit
-  %h2 Welcome
-  %p Convo is the quickest way to do a video chat.
+  .section
+    %h2 Welcome
+    %p.tight Convo is the quickest way to video chat.
+    %small No signing up.  No logins.  Just share a link to get started.
 
   %h3 Get Started Now
   =form_for Room.new do |f|
     =f.submit class: 'btn btn-large btn-primary'
 
   %h4 How it works
-  %p Create your own chat room by clicking the button above. Share the url with a friend. When you both visit the page you'll be connected. 
+  %small Create your own chat room by clicking the button above. Share the url with a friend. When you both visit the page you'll be connected. 
+
+-# can list rooms the person has created
+-# p @prior_rooms
   

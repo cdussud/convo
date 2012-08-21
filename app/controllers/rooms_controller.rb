@@ -24,6 +24,9 @@ class RoomsController < ApplicationController
     @room.session_token = OpenTokWrapper.new_session request.remote_addr
 
     if @room.save
+      prior_rooms = cookies[:rooms] || []
+      prior_rooms << @room.slug
+      cookies.permanent[:rooms] = prior_rooms
       redirect_to @room, notice: 'Room was successfully created.'
     else
       render action: "new"
