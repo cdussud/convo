@@ -1,9 +1,11 @@
 Convo::Application.routes.draw do
-  resources :rooms
 
-  get "static_pages/home"
+  get "home/index"
+ 
 
-  root :to => 'rooms#index' #'static_pages#home'
+  resources :rooms, except: [:show]
+  match '/:id' => 'rooms#show', as: :room
+  root :to => 'home#index' #'static_pages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

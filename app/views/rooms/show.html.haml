@@ -12,18 +12,23 @@
 
 %p#notice= notice
 
-For higher-quality video
-%li
-  Navigate to
-  %code chrome://flags
-  in Chrome.
+.alert.alert-info
+  The link to this room is
+  =link_to room_url(@room)
+
+%div
+  For higher-quality video
   %li
-    Find the
-    %strong Enable PeerConnection
-    flag and click
-    = succeed "." do
-      %strong Enable
-  %li Relaunch Chrome.
+    Navigate to
+    %code chrome://flags
+    in Chrome.
+    %li
+      Find the
+      %strong Enable PeerConnection
+      flag and click
+      = succeed "." do
+        %strong Enable
+    %li Relaunch Chrome.
 
   -# todo: rename
 #myPublisherDiv

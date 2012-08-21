@@ -21,15 +21,7 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(params[:room])
-
-    # room gets a session id
-    # TODO: should probably create an OpenTok model to encapsulate session creation
-    config = Rails.application.config
-    opentok = OpenTok::OpenTokSDK.new config.opentok[:api_key], config.opentok[:api_secret]
-    opentok.api_url = config.opentok[:api_endpoint]
-    session_properties = { OpenTok::SessionPropertyConstants::P2P_PREFERENCE => "enabled" }  # do peer to peer
-    session = opentok.create_session request.remote_addr
-    @room.session_token = session.session_id
+    @room.session_token = OpenTokWrapper.new_session request.remote_addr
 
     if @room.save
       redirect_to @room, notice: 'Room was successfully created.'

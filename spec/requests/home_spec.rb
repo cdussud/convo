@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Home page" do
 
   it "should have the content 'Sample App'" do
-    visit '/static_pages/home'
-    page.should have_content('Sample App')
+    visit root_path
+    page.should have_content('Hello')
   end
 end
