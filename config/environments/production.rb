@@ -20,10 +20,13 @@ Convo::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  # redirect naked domain to www
+  # redirect www to naked domain (or the reverse)
   config.middleware.insert_before(Rack::Lock, Rack::Rewrite) do
-    r301 %r{.*}, 'http://www.sohi.io$&', :if => Proc.new {|rack_env|
-    rack_env['SERVER_NAME'] == 'sohi.io'}
+    r301 %r{.*}, 'http://sohi.io$&', :if => Proc.new {|rack_env|
+    rack_env['SERVER_NAME'] == 'www.sohi.io'}
+
+    # r301 %r{.*}, 'http://www.sohi.io$&', :if => Proc.new {|rack_env|
+    # rack_env['SERVER_NAME'] == 'sohi.io'}
   end
 
   # Defaults to nil and saved in location specified by config.assets.prefix
