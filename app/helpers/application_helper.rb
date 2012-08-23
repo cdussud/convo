@@ -1,4 +1,10 @@
 module ApplicationHelper
+
+  def app_name
+    APP_CONFIG["app_name"].capitalize
+  end
+
+
   def opentok_key
     Rails.application.config.opentok[:api_key]
   end

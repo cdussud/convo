@@ -27,3 +27,7 @@ end
 group :test do
   gem 'capybara'
 end
+
+group :production do
+  gem 'rack-rewrite'
+end

@@ -1,0 +1,11 @@
+common: &common_settings
+  app_name: sohi
+
+development: &development_settings
+  <<: *common_settings
+
+test:
+  <<: *development_settings
+
+production: &production_settings
+  <<: *common_settings

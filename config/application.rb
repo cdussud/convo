@@ -11,6 +11,9 @@ end
 
 module Convo
   class Application < Rails::Application
+
+    ::APP_CONFIG = YAML.load(File.read(File.join(Rails.root, "/config/config.yml")))[Rails.env].freeze
+    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
