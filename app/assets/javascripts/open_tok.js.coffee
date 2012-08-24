@@ -12,7 +12,7 @@ class StreamManager
  
 
   sessionConnectedHandler: (event) =>
-    publisher = @session.publish('myPublisherDiv', { width: 400, height: 300 })
+    publisher = @session.publish('published', { width: 320, height: 240 })
     # Subscribe to streams that were in the session when we connected
     @subscribeToStreams(event.streams)
 
@@ -22,16 +22,19 @@ class StreamManager
   
    
   subscribeToStreams: (streams) ->
+    container = document.getElementById('video-container')
+
     for stream in streams
       # Check that connectionId on the stream to make sure we don't subscribe to ourself
       if (stream.connection.connectionId != @session.connection.connectionId)
-        # Create the div to put the subscriber element in to
+        # Create the div to put the subscriber element into
         div = document.createElement('div');
         div.setAttribute('id', 'stream' + stream.streamId)
-        document.body.appendChild(div);
+        div.setAttribute('class', 'video-stream')
+        container.appendChild(div);
          
         # Subscribe to the stream
-        @session.subscribe(stream, div.id, { width: 800, height: 600 });
+        @session.subscribe(stream, div.id, { width: 600, height: 450 });
 
 
 class VideoPlayer
