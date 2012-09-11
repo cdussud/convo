@@ -13,7 +13,13 @@
   %small Create your own chat room by clicking the button above. Share the url with a friend. When you both visit the page you'll be connected. 
 
 - if @show_ads
-  = javascript_include_tag "http://noads.herokuapp.com/ad.js"
+  - if @url
+    :javascript
+      window.adAccessUrl = "#{@url}/subscriptions/access.js"
+  - else
+    - @url = "http://noads.herokuapp.com"
+
+  = javascript_include_tag @url + "/ad.js"
   .section
     %h3 Some sample ads
     Click the link for a demo (no payment or login required)
