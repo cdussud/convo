@@ -13,10 +13,11 @@
   %small Create your own chat room by clicking the button above. Share the url with a friend. When you both visit the page you'll be connected. 
 
 - if @show_ads
+  = javascript_include_tag "http://noads.herokuapp.com/ad.js"
   .section
     %h3 Some sample ads
     Click the link for a demo (no payment or login required)
-    %a{href: "http://localhost:3000/pay_demo"} Pay to remove ads
+    %a{href: "http://noads.herokuapp.com/sites/504e9965e2ef3a0200000001"} Pay to remove ads
 
   .row{ onclick: 'return false;'}
     .span3
