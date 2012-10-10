@@ -4,4 +4,7 @@ class HomeController < ApplicationController
     @show_ads = params[:ads] != nil
     @url = params[:url]
   end
+
+  def login
+  end
 end

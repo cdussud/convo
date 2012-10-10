@@ -8,6 +8,23 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    / .alert 
+    /   Hi. We've noticed you're using an ad blocker. This site is ad-supported. If you like our content would you mind donating a small amount?
+    /   .btn.btn-info donate here
+    /   %a more info
     = render 'layouts/header'
     .container
       = yield
+    - if Rails.env.production?  # FB won't redirect to localhost, so off in dev and test
+      #userName
+      :javascript
+        $(function() {
+          fbLogin = new FBLogin('279920175458052');
+        });
+
+        function displayUser(user) {
+          var userName = document.getElementById('userName');
+          var greetingText = document.createTextNode('Greetings, '
+            + user.userName + '.');
+          userName.appendChild(greetingText);
+        }

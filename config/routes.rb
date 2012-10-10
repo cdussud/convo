@@ -1,6 +1,7 @@
 Convo::Application.routes.draw do
 
   get "home/index"
+  get "home/login"
  
 
   resources :rooms, except: [:show]
