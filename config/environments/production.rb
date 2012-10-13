@@ -12,8 +12,7 @@ Convo::Application.configure do
   config.serve_static_assets = false
 
   # Compress JavaScripts and CSS
- # config.assets.compress = true
-  config.assets.compress = false  # TEMP
+  config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
@@ -28,6 +27,8 @@ Convo::Application.configure do
 
     # r301 %r{.*}, 'http://www.sohi.io$&', :if => Proc.new {|rack_env|
     # rack_env['SERVER_NAME'] == 'sohi.io'}
+
+  config.action_mailer.default_url_options = { :host => 'sohi.io' }
   end
 
   # Defaults to nil and saved in location specified by config.assets.prefix

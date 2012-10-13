@@ -14,12 +14,16 @@
     /   %a more info
     = render 'layouts/header'
     .container
+      - if notice
+        %p.notice= notice
+      - if alert
+        %p.alert= alert
       = yield
     - if Rails.env.production?  # FB won't redirect to localhost, so off in dev and test
       #userName
       :javascript
         $(function() {
-          fbLogin = new FBLogin('279920175458052');
+          // fbLogin = new FBLogin('279920175458052');  // default fb login off for
         });
 
         function displayUser(user) {
