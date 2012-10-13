@@ -1,6 +1,6 @@
 .center.hero-unit
   .section
-    %h2 Welcome
+    %h2= "Welcome #{current_user.first_name if current_user }"
     %p.tight= "#{app_name} is the quickest way to video chat." 
     %small No signing up.  No logins.  Just share a link to get started.
 

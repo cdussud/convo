@@ -27,9 +27,9 @@ Convo::Application.configure do
 
     # r301 %r{.*}, 'http://www.sohi.io$&', :if => Proc.new {|rack_env|
     # rack_env['SERVER_NAME'] == 'sohi.io'}
+  end
 
   config.action_mailer.default_url_options = { :host => 'sohi.io' }
-  end
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
