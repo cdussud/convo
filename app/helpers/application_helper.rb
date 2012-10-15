@@ -1,26 +1,69 @@
+require 'net/http'
+
+
 module ApplicationHelper
 
-
-  # TEMP: rails code stuff
-
-    # def current_user=(user)
-  #   @current_user = user
-  # end
-
-  # def current_user
-  #   @current_user ||= User.find_by_remember_token(cookies[:remember_token])
-  # end
-
   class User
-    def first_name
-      "Cedric fake"
-    end
+    attr_accessor :name
+    attr_accessor :email
+    attr_accessor :id
   end
 
   def current_user
-    User.new
-  end
 
+
+    token = JSON.parse(cookies['LP-auth']) if cookies['LP-auth']
+
+    p "token is #{token}"
+    if token
+
+      result = nil
+
+      uri = URI('http://localhost:3000/login/check?remember_token=' + token['remember_token'])
+      http = Net::HTTP.new(uri.host, uri.port)
+
+      if uri.scheme =='https'
+        http.use_ssl = true
+      end
+
+      result = nil
+      http.start do
+        request = Net::HTTP::Get.new(uri.request_uri)
+        answer = http.request(request)
+
+        if (answer.is_a? Net::HTTPOK)
+          result = JSON.parse(answer.body)
+        end
+      end
+
+      logger.debug("Result from my thing: " + result.inspect)
+      
+
+      if result
+        user = User.new
+        user.email =  result['email']
+        user.id = result['id']
+        user.name = result['name']
+      end
+
+      @current_user = user
+
+
+    end
+
+
+
+
+
+#    @current_user ||=
+ #   p @current_user
+
+    # get a remember token from this: look it up by calling the server.
+    # todo: put an exires date in the token.
+
+    #@current_user
+   # User.new
+  end
 
  # ..........................
 

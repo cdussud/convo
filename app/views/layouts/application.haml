@@ -27,16 +27,23 @@
       - if alert
         %p.alert= alert
       = yield
-    - if Rails.env.production?  # FB won't redirect to localhost, so off in dev and test
-      / #userName
-      / :javascript
-      /   $(function() {
-      /     // fbLogin = new FBLogin('279920175458052');  // default fb login off for
-      /   });
 
-      /   function displayUser(user) {
-      /     var userName = document.getElementById('userName');
-      /     var greetingText = document.createTextNode('Greetings, '
-      /       + user.userName + '.');
-      /     userName.appendChild(greetingText);
-      /   }
+      .loginPrompt
+    = JSON.parse(cookies['LP-auth']) if cookies['LP-auth'].present?
+    = current_user.inspect
+
+
+    :javascript
+      window.loginPrompt = new LP();
+      $(document).on(LP.constants.eventAfterLoginStateChange, function(e, loginState) {
+        if (loginState === LP.constants.loginStateLoggedIn) {
+          window.location.reload();
+        }
+      });
+  
+      window.loginPrompt.addUserRegistrationFields([
+        ['First Name', 'first_name', new RegExp('[A-Za-z].*')],
+        ['Last Name', 'last_name']
+      ]);
+  
+      window.loginPrompt.init('.loginPrompt');
