@@ -21,7 +21,11 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(params[:room])
-    @room.session_token = OpenTokWrapper.new_session request.remote_addr
+    
+    begin
+      @room.session_token = OpenTokWrapper.new_session request.remote_addr
+    rescue
+    end
 
     if @room.save
       prior_rooms = cookies[:rooms] || []
