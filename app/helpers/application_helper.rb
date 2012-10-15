@@ -1,5 +1,30 @@
 module ApplicationHelper
 
+
+  # TEMP: rails code stuff
+
+    # def current_user=(user)
+  #   @current_user = user
+  # end
+
+  # def current_user
+  #   @current_user ||= User.find_by_remember_token(cookies[:remember_token])
+  # end
+
+  class User
+    def first_name
+      "Cedric fake"
+    end
+  end
+
+  def current_user
+    User.new
+  end
+
+
+ # ..........................
+
+
   def app_name
     APP_CONFIG["app_name"].capitalize
   end

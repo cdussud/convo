@@ -12,19 +12,31 @@
     /   Hi. We've noticed you're using an ad blocker. This site is ad-supported. If you like our content would you mind donating a small amount?
     /   .btn.btn-info donate here
     /   %a more info
+
+    / %script{:src => "/assets/jquery.js?body=1", :type => "text/javascript"}
+    /%script{:src => "http://demo.loginprompt.com/jquery.cookie.js", :type => "text/javascript"}
+    / %script{:src => "http://demo.loginprompt.com/lp-client.js", :type => "text/javascript"}
+
+    %script{:src => "http://localhost:3000/jquery.cookie.js", :type => "text/javascript"}
+    %script{:src => "http://localhost:3000/lp-client.js", :type => "text/javascript"}
+
     = render 'layouts/header'
     .container
+      - if notice
+        %p.notice= notice
+      - if alert
+        %p.alert= alert
       = yield
     - if Rails.env.production?  # FB won't redirect to localhost, so off in dev and test
-      #userName
-      :javascript
-        $(function() {
-          fbLogin = new FBLogin('279920175458052');
-        });
+      / #userName
+      / :javascript
+      /   $(function() {
+      /     // fbLogin = new FBLogin('279920175458052');  // default fb login off for
+      /   });
 
-        function displayUser(user) {
-          var userName = document.getElementById('userName');
-          var greetingText = document.createTextNode('Greetings, '
-            + user.userName + '.');
-          userName.appendChild(greetingText);
-        }
+      /   function displayUser(user) {
+      /     var userName = document.getElementById('userName');
+      /     var greetingText = document.createTextNode('Greetings, '
+      /       + user.userName + '.');
+      /     userName.appendChild(greetingText);
+      /   }
