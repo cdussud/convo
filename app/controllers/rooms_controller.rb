@@ -27,7 +27,7 @@ class RoomsController < ApplicationController
       prior_rooms = cookies[:rooms] || []
       prior_rooms << @room.slug
       cookies.permanent[:rooms] = prior_rooms
-      redirect_to @room, notice: 'Room was successfully created.'
+      redirect_to @room #, notice: 'Room was successfully created.'
     else
       render action: "new"
     end

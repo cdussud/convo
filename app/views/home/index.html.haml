@@ -1,7 +1,10 @@
 .center.hero-unit
-  .section
-    %h2= "#{app_name} is the quickest way to video chat." 
-    %p.tight No signing up.  No logins.  Just share a link to get started.
+  .blah
+    .section
+      %h2= "#{app_name} is the quickest way to video chat." 
+      %p.tight No signing up.  No logins.  Just share a link to get started.
 
-  =form_for Room.new do |f|
-    =f.submit 'Get Started', class: 'btn btn-large btn-primary'
+    =form_for Room.new do |f|
+      =f.submit 'Get Started', class: 'btn btn-large btn-primary'
+
+  =image_tag 'chat.png', { id: 'hero-image' }
