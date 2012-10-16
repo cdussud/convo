@@ -19,6 +19,10 @@
       - if alert
         %p.alert= alert
 
+      - if Rails.env.development?
+        :javascript
+          LP.constants.urlBase = 'http://localhost:3000';
+
       :javascript
         window.loginPrompt = new LP('507c4b060a967c2f2e000001');
         // $(document).on(LP.constants.eventAfterLoginStateChange, function(e, loginState) {
