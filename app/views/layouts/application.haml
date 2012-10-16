@@ -39,10 +39,10 @@
 
     :javascript
       window.loginPrompt = new LP();
-      $(document).on(LP.constants.eventAfterLoginStateChange, function(e, loginState) {
-        if (loginState === LP.constants.loginStateLoggedIn) {
-          window.location.reload();
-        }
-      });
+      / $(document).on(LP.constants.eventAfterLoginStateChange, function(e, loginState) {
+      /   if (loginState === LP.constants.loginStateLoggedIn) {
+      /     window.location.reload();
+      /   }
+      / });
   
       window.loginPrompt.init('.loginPrompt');
