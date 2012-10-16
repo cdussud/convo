@@ -1,3 +1,7 @@
 %h3= "Please Register"
-.loginPrompt
+#registerForm
+
+:javascript
+  var form = new LP.UIFunctions.FormDefinitions.UserRegistration(window.loginPrompt.UI);
+  window.loginPrompt.UI.insertForm($('#registerForm'), form);
 
