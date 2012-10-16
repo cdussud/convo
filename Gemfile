@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
-gem 'pg'
 gem 'opentok'
 gem 'haml-rails'
 
@@ -21,6 +20,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec-rails'
 end
 
@@ -29,5 +29,6 @@ group :test do
 end
 
 group :production do
+  gem 'pg'
   gem 'rack-rewrite'
 end

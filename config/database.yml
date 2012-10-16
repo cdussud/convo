@@ -1,4 +1,16 @@
-common: &common_settings
+#common: &common_settings
+
+development:
+  adapter: sqlite3
+  database: db/convo_development.sqlite3
+  pool: 5
+  timeout: 5000
+
+test: &test
+#  <<: *common_settings
+  database: convo_test
+
+production:
   adapter: postgresql
   encoding: unicode
   min_messages: warning
@@ -7,17 +19,6 @@ common: &common_settings
   password: postgres
   host: localhost
   port: 5432
-
-development:
-  <<: *common_settings
-  database: convo_development
-
-test: &test
-  <<: *common_settings
-  database: convo_test
-
-production:
-  <<: *common_settings
   database: convo_production
 
 cucumber:
