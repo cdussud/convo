@@ -21,7 +21,12 @@ module ApplicationHelper
 
       result = nil
 
-      uri = URI('http://localhost:3000/login/check?remember_token=' + token['remember_token'])
+      base_path = Rails.env.production? ? 'http://demo.loginprompt.com' : 'http://localhost:3000'
+      uri = URI(base_path + '/login/check?remember_token=' + token['remember_token'])
+
+      p "Calling server..."
+      p uri
+
       http = Net::HTTP.new(uri.host, uri.port)
 
       if uri.scheme =='https'
