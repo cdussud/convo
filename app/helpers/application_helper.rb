@@ -10,7 +10,9 @@ module ApplicationHelper
   end
 
   def current_user
-
+    cookies.each do |cookie|
+      p cookie
+    end
 
     token = JSON.parse(cookies['LP-auth']) if cookies['LP-auth']
 

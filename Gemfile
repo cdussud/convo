@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 gem 'opentok'
 gem 'haml-rails'
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -17,6 +18,7 @@ gem 'jquery-rails'
 
 group :development do
   gem 'annotate'
+  gem 'quiet_assets'
 end
 
 group :development, :test do
