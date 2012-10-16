@@ -9,8 +9,12 @@
     = csrf_meta_tags
   %body
 
-    %script{:src => "http://localhost:3000/jquery.cookie.js", :type => "text/javascript"}
-    %script{:src => "http://localhost:3000/lp-client.js", :type => "text/javascript"}
+    - if Rails.env.development?
+      %script{:src => "http://localhost:3000/jquery.cookie.js", :type => "text/javascript"}
+      %script{:src => "http://localhost:3000/lp-client.js", :type => "text/javascript"}
+    - else
+      %script{:src => "http://demo.loginprompt.com/jquery.cookie.js", :type => "text/javascript"}
+      %script{:src => "http://demo.loginprompt.com/lp-client.js", :type => "text/javascript"}
 
     = render 'layouts/header'
     .container
