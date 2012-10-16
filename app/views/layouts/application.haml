@@ -26,15 +26,17 @@
       - if Rails.env.development?
         :javascript
           LP.constants.urlBase = 'http://localhost:3000';
-
+          window.loginPrompt = new LP('507c4b060a967c2f2e000001');
+      -else
+        :javascript
+          window.loginPrompt = new LP('507dc578d8dc770200000001');
+          // $(document).on(LP.constants.eventAfterLoginStateChange, function(e, loginState) {
+          //   if (loginState === LP.constants.loginStateLoggedIn) {
+          //     window.location.reload();
+          //   }
+          // });
+      
       :javascript
-        window.loginPrompt = new LP('507c4b060a967c2f2e000001');
-        // $(document).on(LP.constants.eventAfterLoginStateChange, function(e, loginState) {
-        //   if (loginState === LP.constants.loginStateLoggedIn) {
-        //     window.location.reload();
-        //   }
-        // });
-    
         $(document).ready(function() {
           window.loginPrompt.init('.loginPrompt');
         });
