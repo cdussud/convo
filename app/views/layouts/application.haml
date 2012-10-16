@@ -28,10 +28,14 @@
         %p.alert= alert
       = yield
 
-      .loginPrompt
-    = JSON.parse(cookies['LP-auth']) if cookies['LP-auth'].present?
-    = current_user.inspect
+    - if Rails.env.development?
+      = JSON.parse(cookies['LP-auth']) if cookies['LP-auth'].present?
+      = current_user.inspect
 
+    / window.loginPrompt.addUserRegistrationFields([
+    /   ['First Name', 'first_name', new RegExp('[A-Za-z].*')],
+    /   ['Last Name', 'last_name']
+    / ]);
 
     :javascript
       window.loginPrompt = new LP();
@@ -40,10 +44,5 @@
           window.location.reload();
         }
       });
-  
-      window.loginPrompt.addUserRegistrationFields([
-        ['First Name', 'first_name', new RegExp('[A-Za-z].*')],
-        ['Last Name', 'last_name']
-      ]);
   
       window.loginPrompt.init('.loginPrompt');

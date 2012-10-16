@@ -2,7 +2,7 @@ Convo::Application.routes.draw do
 
   get "home/index"
   get "home/login"
- 
+  get "home/register"
 
   resources :rooms, except: [:show]
   match '/:id' => 'rooms#show', as: :room
