@@ -21,7 +21,7 @@ module ApplicationHelper
 
       result = nil
 
-      base_path = Rails.env.production? ? 'http://demo.loginprompt.com' : 'http://localhost:3000'
+      base_path = Rails.env.production? ? 'https://demo.loginprompt.com' : 'http://localhost:3000'
       uri = URI(base_path + '/login/check?remember_token=' + token['remember_token'])
 
       p "Calling server..."
