@@ -5,6 +5,8 @@ gem 'opentok'
 gem 'haml-rails'
 gem 'thin'
 
+gem 'loginprompt'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
