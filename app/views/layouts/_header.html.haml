@@ -8,6 +8,7 @@
           %li= link_to "Home",    '/'
           %li= link_to "Help",    '#'
           - if current_user
+            %li= link_to "Hi #{current_user.name}", {} if signed_in?
             %li= link_to "Sign Out", {}, class: "LP-logout"#, destroy_user_session_path, method: :delete
           - else
             %li= link_to "Sign In", home_login_path
