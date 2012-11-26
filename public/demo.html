@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- Sample that shows how to use special class names to create a full client-side login experience -->
+<html>
+ <head>
+  <link href="https://demo.loginprompt.com/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
+ </head>
+ <body class="container">
+
+  <div>
+    <h1>Login and Registration Sample</h1>
+      <p>Look at this page's source code to see how it's done or check out our 
+        <a href="https://www.loginprompt.com/docs">docs.</a>
+      </p>
+    <hr/>
+  </div>
+
+
+  <!-- Logged In -->
+
+  <div class="LP-visible-logged-in">
+    Hi <span class="LP-user-name"></span>!
+    You're logged in.
+    <a class="LP-logout" href="">Log out</a> to see the login form again.
+  </div>
+
+
+
+  <!-- Show when Logged Out -->
+
+  <div class="LP-visible-logged-out">
+
+    <!-- Nice Login Form -->
+
+    <h3>Login </h3>
+    <div class="row">
+      <div class="well span3">
+        <div class="LP-login-form"></div>
+      </div>
+    </div>
+
+    <!-- Facebook -->
+
+    <hr/>
+    <h3> Facebook Login </h3>
+    <a class="LP-facebook" href="">
+      <img src="https://demo.loginprompt.com/fblogin.png" alt="Login with Facebook"/>
+    </a>
+
+
+    <!-- Registration -->
+
+    <hr/>
+    <h3>Register</h3>
+     <div class="row">
+      <div class="well span3">
+        <div class="LP-registration-form"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  <script src="https://demo.loginprompt.com/lp-client.js"></script>
+  <script type="text/javascript">
+    window.loginPrompt = new LP({
+      siteId: '507dc578d8dc770200000001',  // Demo site id. Feel free to use, but contact us at
+                                           // support@loginprompt.com before using it in production code.
+      facebookAppId: '279920175458052',     // LoginPrompt demo site. You'll need to create your own FB app id.
+      formOptions: {
+        registration: {
+          submit: { value: 'Create your account', cssClass: 'btn btn-block btn-primary'}
+        },
+        login: {
+          submit: { value: 'Sign in to your account', cssClass: 'btn btn-block btn-primary'}
+        }
+      }
+    });
+  </script>
+ </body>
+</html>
