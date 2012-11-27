@@ -1,10 +1,58 @@
 .center.hero-unit
-  .blah
-    .section
-      %h2= "#{app_name} is the quickest way to video chat." 
-      %p.tight No signing up.  No logins.  Just share a link to get started.
+  .section
+    %h2 Welcome
+    %p.tight= "#{app_name} is the quickest way to video chat." 
+    %small No signing up.  No logins.  Just share a link to get started.
 
-    =form_for Room.new do |f|
-      =f.submit 'Get Started', class: 'btn btn-large btn-primary'
+  %h3 Get Started Now
+  =form_for Room.new do |f|
+    =f.submit class: 'btn btn-large btn-primary'
 
-  =image_tag 'chat.png', { id: 'hero-image' }
+  %h4 How it works
+  %small Create your own chat room by clicking the button above. Share the url with a friend. When you both visit the page you'll be connected. 
+
+- if @show_ads
+  - if @url
+    :javascript
+      window.adAccessUrl = "#{@url}/subscriptions/access.js"
+  - else
+    - @url = "http://noads.herokuapp.com"
+
+  = javascript_include_tag @url + "/ad.js"
+  .section
+    %h3 Some sample ads
+    Click the link for a demo (no payment or login required)
+    %a{href: "http://noads.herokuapp.com/sites/504e9965e2ef3a0200000001"} Pay to remove ads
+
+  .row{ onclick: 'return false;'}
+    .span3
+      #TopRight.singleAd
+        %img{:alt => "", :border => "0", :height => "90", :src => "http://s0.2mdn.net/2408678/184x90-right.jpg", :width => "184"}/
+    .span5
+      .ad.ad300x250
+        %iframe{:frameborder => "0", :height => "250", :scrolling => "no", :src => "http://www.dpreview.com/adverts/ad?prefix=amzn.dprev.home;&tile=2&pos=top&sz=300x250,300x600&ord=7098", :width => "300"}
+
+    .span3
+      / SPONSORED LINKS
+      .sponsoredLinks.ecomComponent.rhsPods.noBorder.clearfix{:style => ""}
+        .googleHeading
+          %a{:href => "http://www.google.com", :rel => "external"} Ads by Google
+        %div
+          %p.title
+            %a{:href => "http://googleads.g.doubleclick.net", :onmouseout => "window.status=''", :onmouseover => "window.status='go to www.HolidayInn.com';return true", :rel => "external"} Paris Hotels
+          %p Great Hotels in Paris Free Internet & Kids Eat Free!
+          %p
+            %a{:href => "http://googleads.g.doubleclick.net", :onmouseout => "window.status=''", :onmouseover => "window.status='go to www.HolidayInn.com';return true", :rel => "external"} www.HolidayInn.com
+        %div
+          %p.title
+            %a{:href => "http://googleads.g.doubleclick.net", :onmouseout => "window.status=''", :onmouseover => "window.status='go to www.discoverlongisland.com';return true", :rel => "external"} Long Island Guide
+          %p Suffolk County Beaches & Museums. Get Free Long Island Travel Guide!
+          %p
+            %a{:href => "http://googleads.g.doubleclick.net", :onmouseout => "window.status=''", :onmouseover => "window.status='go to www.discoverlongisland.com';return true", :rel => "external"} www.discoverlongisland.com
+        %div
+          %p.title
+            %a{:href => "http://googleads.g.doubleclick.net", :onmouseout => "window.status=''", :onmouseover => "window.status='go to www.orbitz.com/Travel';return true", :rel => "external"} ORBITZ® Travel
+          %p Mix and Match Flights & Hotels with the Orbitz Matrix Display! Save Now
+          %p
+            %a{:href => "http://googleads.g.doubleclick.net", :onmouseout => "window.status=''", :onmouseover => "window.status='go to www.orbitz.com/Travel';return true", :rel => "external"} www.orbitz.com/Travel
+  
